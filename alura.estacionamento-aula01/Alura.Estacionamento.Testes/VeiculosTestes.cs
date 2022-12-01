@@ -11,7 +11,7 @@ namespace Alura.Estacionamento.Testes
         {
 
             
-            // Arrange é a preparação do ambiente
+            // Arrange é a preparação do ambiente (inserção de veriavéis)
             var veiculo = new Veiculo();
 
             // Act é metodo que queremos testar no caso Acelerar() e Frear()
