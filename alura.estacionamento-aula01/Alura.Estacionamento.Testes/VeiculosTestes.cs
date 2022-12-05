@@ -2,14 +2,26 @@ using Alura.Estacionamento.Alura.Estacionamento.Modelos;
 using Alura.Estacionamento.Modelos;
 using System;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Alura.Estacionamento.Testes
 {
     public class VeiculosTestes
     {
-        [Fact(DisplayName = "Teste n°1")]
-        [Trait("Funcionalidade", "Acelerar")]
-        public void TestaVeiculoAcelerar()
+        public ITestOutputHelper Output { get; }
+        private Veiculo veiculo;
+
+        public VeiculosTestes(ITestOutputHelper output)
+        {
+            Output = output;
+            Output.WriteLine("Execução do  construtor.");
+            veiculo = new Veiculo();
+            veiculo.Tipo = TipoVeiculo.Automovel;
+        }
+
+        [Fact/*(DisplayName = "Teste n°1")*/]
+        //[Trait("Funcionalidade", "Acelerar")]
+        public void TestaVeiculoAcelerarComAceleracao10()
         {
 
             // Arrange é a preparação do ambiente (inserção de veriavéis)
@@ -27,7 +39,7 @@ namespace Alura.Estacionamento.Testes
         [Fact(DisplayName = "Teste n°2")]
         [Trait("Funcionalidade", "Frear")]
 
-        public void TestaVeiculoFrear()
+        public void TestaVeiculoFrearComFreio10()
         {
 
             var veiculo = new Veiculo();
@@ -37,15 +49,14 @@ namespace Alura.Estacionamento.Testes
         }
 
 
-        // O teste a baixo será ignorado
-        [Fact(DisplayName = "teste nº3", Skip = "Teste ainda não implementado")]
-        public void ValidaNomeProprietario()
-        {
-            // Exemplo de utilização do Skip
-        }
+        //[Fact/*(DisplayName = "Teste n°3",*/( Skip = "Teste ainda não implementado")]
+        //public void ValidaNomeProprietario()
+        //{
+        //    // Exemplo de utilização do Skip
+        //}
 
         [Fact]
-        public void AlterarDadosVeiculo()
+        public void AlteraDadosVeiculoDeUmDeterminadoVeiculoComBaseNaPlaca()
         {
             //Arrange
 
@@ -64,7 +75,7 @@ namespace Alura.Estacionamento.Testes
             veiculoAlterado.Modelo = "Opala";
 
             //Act
-            var alterado = estacionamento.AlteraDados(veiculoAlterado);
+            var alterado = estacionamento.AlteraDadosVeiculo(veiculoAlterado);
 
             //Assert
             Assert.Equal(alterado.Cor, veiculoAlterado.Cor);
@@ -72,7 +83,7 @@ namespace Alura.Estacionamento.Testes
         }
 
         [Fact]
-        public void DadosVeiculo()
+        public void GerarFichadeInformaçãodoProprioVeiculo()
         {
             //Arrange
             var veiculo = new Veiculo();

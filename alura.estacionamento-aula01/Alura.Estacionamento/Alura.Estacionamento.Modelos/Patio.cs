@@ -84,7 +84,7 @@ namespace Alura.Estacionamento.Modelos
         }
 
 
-        public Veiculo AlteraDados(Veiculo veiculoAlterado)
+        public Veiculo AlteraDadosVeiculo(Veiculo veiculoAlterado)
         {
             // Como estamos trabalhando com array de objetos,
             // Podemos utilizar os recursos do `Linq to Objetcs` do .NET
